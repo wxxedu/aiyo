@@ -1,0 +1,52 @@
+{
+    "name": "aiyo",
+    "displayName": "Aiyo",
+    "description": "Aiyo lah, let me help you write comments in Singlish",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "activationEvents": [
+        "onCommand:extension.addFunctionComment"
+    ],
+    "categories": [
+        "Other"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.addFunctionComment",
+                "title": "Aiyo: Add Singlish Comment"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Aiyo",
+            "properties": {
+                "aiyo.openaiApiKey": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Your OpenAI API key lah"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "pnpm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "pnpm run compile && pnpm run lint",
+        "lint": "eslint src --ext ts"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.0",
+        "@types/vscode": "^1.60.0",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@langchain/core": "^0.3.31",
+        "@langchain/openai": "^0.0.14",
+        "openai": "^4.79.1"
+    }
+}
